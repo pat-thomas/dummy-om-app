@@ -11,13 +11,13 @@
                  [om-utils                  "0.4.0"]
                  [secretary                 "1.2.1"]]
   :cljsbuild {:builds [{:id           "development"
-                        :source-paths ["src"]
+                        :source-paths ["src/dummy_om_app/app"]
                         :compiler     {:output-to     "dummy_om_app.js"
                                        :output-dir    "out"
                                        :optimizations :none
                                        :source-map    true}}
                        {:id           "production"
-                        :source-paths ["src"]
+                        :source-paths ["src/dummy_om_app/app"]
                         :compiler     {:output-to     "dummy_om_app_prod.js"
                                        :optimizations :advanced
                                        :pretty-print  false

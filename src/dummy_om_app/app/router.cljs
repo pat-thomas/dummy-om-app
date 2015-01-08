@@ -1,4 +1,4 @@
-(ns dummy-om-app.router
+(ns dummy-om-app.app.router
   (:require [secretary.core         :as secretary :refer-macros [defroute]]
             [goog.events            :as events]
             [goog.history.EventType :as EventType])
