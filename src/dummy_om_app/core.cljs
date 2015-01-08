@@ -1,5 +1,10 @@
-(ns dummy-om-app.core)
+(ns dummy-om-app.core
+  (:require [dummy-om-app.router :as router]))
 
 (enable-console-print!)
 
-(println "hello")
+(defn init!
+  []
+  (router/init!))
+
+(init!)
