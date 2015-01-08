@@ -1,8 +1,12 @@
 (ns dummy-om-app.app.router
-  (:require [dummy-om-app.app.xhr   :as xhr]
-            [secretary.core         :as secretary :refer-macros [defroute]]
-            [goog.events            :as events]
-            [goog.history.EventType :as EventType])
+  (:require [dummy-om-app.app.xhr            :as xhr]
+            [dummy-om-app.app.components.app :as app]
+            [dummy-om-app.app.state          :as app-state]
+            [om.core                         :as om  :include-macros true]
+            [om.dom                          :as dom :include-macros true]
+            [secretary.core                  :as secretary :refer-macros [defroute]]
+            [goog.events                     :as events]
+            [goog.history.EventType          :as EventType])
   (:import goog.History))
 
 (defn init!
@@ -14,16 +18,13 @@
 
 (defroute home "/"
   []
-  (xhr/xhr-req {:method      :get
-                :url         "users/accounts"
-                :on-complete (fn [resp]
-                               (println resp))})
-  (println "home"))
+  (om/root app/home app-state/app-state {:target (. js/document (getElementById "my-app"))
+                                         :opts   {}}))
 
 (defroute "*"
   []
   (println "not-found"))
 
-;;(defroute "/users/:id")
+
 
 
