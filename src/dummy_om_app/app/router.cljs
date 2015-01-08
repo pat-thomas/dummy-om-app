@@ -1,5 +1,6 @@
 (ns dummy-om-app.app.router
-  (:require [secretary.core         :as secretary :refer-macros [defroute]]
+  (:require [dummy-om-app.app.xhr   :as xhr]
+            [secretary.core         :as secretary :refer-macros [defroute]]
             [goog.events            :as events]
             [goog.history.EventType :as EventType])
   (:import goog.History))
@@ -13,6 +14,10 @@
 
 (defroute home "/"
   []
+  (xhr/xhr-req {:method      :get
+                :url         "users/accounts"
+                :on-complete (fn [resp]
+                               (println resp))})
   (println "home"))
 
 (defroute "*"
