@@ -11,6 +11,12 @@
    (xhr/xhr-req {:method      :get
                  :url         "users/accounts"
                  :on-complete (fn [resp]
-                                (om/update! data [:users :accounts] resp))}))
+                                (om/transact! data [:users :accounts] (fn [_]
+                                                                        resp)))}))
   (render
-   (dom/div nil "hello")))
+   (apply dom/div #js {:id "user-list"}
+          (mapv (fn [{:strs [username email]}]
+                  (dom/ul nil
+                          (dom/li nil (str "Username: " username))
+                          (dom/li nil (str "Email: " email))))
+                (get-in data [:users :accounts])))))
