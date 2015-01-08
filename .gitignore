@@ -1,0 +1,12 @@
+/target
+/classes
+/checkouts
+pom.xml
+pom.xml.asc
+*.jar
+*.class
+/.lein-*
+/.nrepl-port
+/out
+dummy_om_app.js
+dummy_om_app_prod.js
