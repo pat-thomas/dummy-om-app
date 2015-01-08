@@ -9,7 +9,8 @@
                  [org.clojure/clojurescript "0.0-2665"]
                  [om                        "0.8.0-rc1"]
                  [om-utils                  "0.4.0"]
-                 [secretary                 "1.2.1"]]
+                 [secretary                 "1.2.1"]
+                 [sham                      "0.1.0-SNAPSHOT"]]
   :cljsbuild {:builds [{:id           "development"
                         :source-paths ["src/dummy_om_app/app"]
                         :compiler     {:output-to     "dummy_om_app.js"
