@@ -21,6 +21,14 @@
   (om/root app/home app-state/app-state {:target (. js/document (getElementById "my-app"))
                                          :opts   {}}))
 
+(defroute messages "/messages"
+  []
+  (println "messages"))
+
+(defroute sign-out "/sign-out"
+  []
+  (println "sign-out"))
+
 (defroute "*"
   []
   (println "not-found"))
