@@ -8,8 +8,18 @@
             [secretary.core                  :as secretary :refer-macros [defroute]]))
 
 (defn set-current-view!
-  [current-view]
-  (swap! app-state/app-state #(assoc % :current-view current-view)))
+  [current-view & [opts]]
+  (if opts
+    (swap! app-state/app-state #(assoc % :current-view {:view current-view
+                                                        :opts opts}))
+    (swap! app-state/app-state #(assoc % :current-view {:view current-view}))))
+
+(defn get-current-view-data
+  []
+  (-> app-state/app-state
+      deref
+      :current-view
+      :opts))
 
 (defroute root "/"
   []
@@ -33,7 +43,7 @@
 
 (defroute friends-detail "/friends/:id"
   [id]
-  (set-current-view! "friends-detail"))
+  (set-current-view! "friends-detail" {:id id}))
 
 (defroute "*"
   []

@@ -24,5 +24,5 @@
   (render
    (dom/div #js {:id "app"}
             (om/build navbar/navbar                            data {})
-            (println "Rendering" (:current-view data))
-            (om/build (get routing-table (:current-view data)) data {}))))
+            (println "Rendering" (get-in data [:current-view :view]))
+            (om/build (get routing-table (get-in data [:current-view :view])) data {:opts (get-in data [:current-view :opts])}))))

@@ -41,3 +41,13 @@ body {
 		background-color: #703;
 		cursor: pointer;
 }
+
+.friends-detail-img {
+		border-radius: 5px;
+}
+
+#friends-detail {
+		background-color: #703;
+		border-radius: 8px;
+		padding: 8px;
+}
