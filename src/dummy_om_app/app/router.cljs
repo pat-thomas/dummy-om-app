@@ -2,12 +2,10 @@
   (:require [dummy-om-app.app.xhr            :as xhr]
             [dummy-om-app.app.components.app :as app]
             [dummy-om-app.app.state          :as app-state]
+            [dummy-om-app.app.history        :as history]
             [om.core                         :as om  :include-macros true]
             [om.dom                          :as dom :include-macros true]
-            [secretary.core                  :as secretary :refer-macros [defroute]]
-            [goog.events                     :as events]
-            [goog.history.EventType          :as EventType])
-  (:import goog.History))
+            [secretary.core                  :as secretary :refer-macros [defroute]]))
 
 (defn set-current-view!
   [current-view]
@@ -15,7 +13,7 @@
 
 (defroute root "/"
   []
-  (set-current-view! "home"))
+  (history/redirect "home"))
 
 (defroute home "/home"
   []
@@ -33,9 +31,13 @@
   []
   (set-current-view! "friends"))
 
+(defroute friends-detail "/friends/:id"
+  [id]
+  (set-current-view! "friends-detail"))
+
 (defroute "*"
   []
-  (println "not-found"))
+  (history/redirect "home"))
 
 
 

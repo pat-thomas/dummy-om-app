@@ -16,11 +16,28 @@
 }
 
 .navbar-el:hover {
-		background-color: #a1a;
+		background-color: #925;
+		color: #fff;
 		cursor: pointer;
 }
 
 body {
+		font-family: 'Helvetica';
 		background-color: #a8a;
 		color: #dcd;
+}
+
+.friend-button {
+		border-radius: 8px;
+		background-color: #502;
+		list-style-type: none;
+		padding: 8px;
+}
+
+.friend-button li {
+}
+
+.friend-button:hover {
+		background-color: #703;
+		cursor: pointer;
 }
