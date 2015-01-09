@@ -9,25 +9,29 @@
             [goog.history.EventType          :as EventType])
   (:import goog.History))
 
-(defn init!
-  []
-  (secretary/set-config! :prefix "#")
-  (let [h (History.)]
-    (events/listen h EventType/NAVIGATE #(secretary/dispatch! (.-token %)))
-    (doto h (.setEnabled true))))
+(defn set-current-view!
+  [current-view]
+  (swap! app-state/app-state #(assoc % :current-view current-view)))
 
-(defroute home "/"
+(defroute root "/"
   []
-  (om/root app/home app-state/app-state {:target (. js/document (getElementById "my-app"))
-                                         :opts   {}}))
+  (set-current-view! "home"))
+
+(defroute home "/home"
+  []
+  (set-current-view! "home"))
 
 (defroute messages "/messages"
   []
-  (println "messages"))
+  (set-current-view! "messages"))
 
 (defroute sign-out "/sign-out"
   []
-  (println "sign-out"))
+  (set-current-view! "sign-out"))
+
+(defroute friends "/friends"
+  []
+  (set-current-view! "friends"))
 
 (defroute "*"
   []
