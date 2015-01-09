@@ -1,0 +1,26 @@
+#navbar {
+		border-radius: 8px;
+		background-color: #703;
+		padding: 10px;
+}
+
+.navbar-el {
+		list-style-type: none;
+		border-radius: 8px;
+		background-color: #705;
+		margin: 5px;
+		padding: 5px;
+		color: #dcd;
+		text-align: right;
+		font-family: 'Helvetica';
+}
+
+.navbar-el:hover {
+		background-color: #a1a;
+		cursor: pointer;
+}
+
+body {
+		background-color: #a8a;
+		color: #dcd;
+}
