@@ -6,6 +6,10 @@
     ],
 
     "messages": [
+      {"sender_id": "PatThomas", "receiver_id": "BeesHere", "content": "Just wanted to stop by and say hello."},
+      {"sender_id": "PatThomas", "receiver_id": "BeesHere", "content": "Stopping by to say hello again."},
+      {"sender_id": "OatRhombus", "receiver_id": "BeesHere", "content": "Buzz buzz! -Oat"},
+      {"sender_id": "OatRhombus", "receiver_id": "BeesHere", "content": "Buzzing by again! -Oat"}
     ]
   }
 }
