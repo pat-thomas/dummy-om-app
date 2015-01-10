@@ -13,12 +13,11 @@
   color: #dcd;
   text-align: right;
   font-family: 'Helvetica';
-}
-
-.navbar-el:hover {
-  background-color: #925;
-  color: #fff;
-  cursor: pointer;
+  &:hover {
+    background-color: #925;
+    color: #fff;
+    cursor: pointer;
+  }
 }
 
 body {
