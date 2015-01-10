@@ -25,4 +25,6 @@
    (dom/div #js {:id "app"}
             (om/build navbar/navbar                            data {})
             (println "Rendering" (get-in data [:current-view :view]))
-            (om/build (get routing-table (get-in data [:current-view :view])) data {:opts (get-in data [:current-view :opts])}))))
+            (dom/div #js {:id "main-content"}
+                     (let [current-view (:current-view data)]
+                       (om/build (get routing-table (:view current-view)) data {:opts (:opts current-view)}))))))

@@ -16,13 +16,15 @@
 (defcomponent navbar-link
   (render
    (let [{:keys [link-text]} opts]
-     (dom/li #js {:className "navbar-el"
+     (dom/li #js {:className "navbar-list-item"
                   :onClick   (navigate-to-app-route link-text)}
              link-text))))
 
 (defcomponent navbar
   (render
-   (apply dom/ul #js {:id "navbar"}
-          (map (fn [n]
-                 (om/build navbar-link data {:opts {:link-text n}}))
-               ["Home" "Friends" "Messages" "Sign Out"]))))
+   (dom/header #js {:id "navbar"}
+               (apply dom/ul #js {:id "navbar-list"}
+                      (map (fn [n]
+                             (om/build navbar-link data {:opts {:link-text n}}))
+                           ;; because they are floated to the right, they have to be rendered in "reverse" order
+                           ["Sign Out" "Messages" "Friends" "Home"])))))

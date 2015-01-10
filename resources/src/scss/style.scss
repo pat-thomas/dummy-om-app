@@ -1,29 +1,47 @@
-#navbar {
-  border-radius:    8px;
-  background-color: #703;
-  padding:          4px;
-}
-
-.navbar-el {
-  border-radius:    8px;
-  list-style-type:  none;
-  background-color: #502;
-  margin:           5px;
-  padding:          6px;
-  color:            #dcd;
-  text-align:       right;
-  font-family:      'Helvetica';
-  &:hover {
-    background-color: #925;
-    color:            #fff;
-    cursor:           pointer;
-  }
+* {
+	margin: 0px;
+	padding: 0px;
 }
 
 body {
   font-family:      'Helvetica';
   background-color: #a8a;
   color:            #ede;
+}
+
+#navbar {
+  height:           40px;
+  width:            100%;
+  background-color: #703;
+  display:          inline-block;
+  position:         relative;
+
+  ul#navbar-list {
+    position: absolute;
+    right:    0px;
+    height:   100%;
+    width:    75%;
+    padding:  4px;
+
+    li.navbar-list-item {
+      float:         right;
+      padding:       7px;
+      margin-left:   4px;
+      border-radius: 6px;
+      &:hover {
+        cursor:           pointer;
+        background-color: #925;
+        color:            #fff;
+      }
+    }
+  }
+}
+
+#main-content {
+  $main-content-margin: 1.5%;
+  margin-top:   $main-content-margin;
+  margin-left:  $main-content-margin;
+  margin-right: $main-content-margin;
 }
 
 .friend-button {
