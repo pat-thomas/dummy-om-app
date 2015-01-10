@@ -3,3 +3,8 @@
 
 (sham/init!
  {:port 4321})
+
+(comment
+  (sham/reload!
+   {:port 4321})
+  )

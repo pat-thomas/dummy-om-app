@@ -14,12 +14,12 @@
                                                         :opts opts}))
     (swap! app-state/app-state #(assoc % :current-view {:view current-view}))))
 
-(defn get-current-view-data
-  []
-  (-> app-state/app-state
-      deref
-      :current-view
-      :opts))
+#_(defn get-current-view-data
+    []
+    (-> app-state/app-state
+        deref
+        :current-view
+        :opts))
 
 (defroute root "/"
   []
