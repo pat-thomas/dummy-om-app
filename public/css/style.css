@@ -1,7 +1,7 @@
 #navbar {
 		border-radius: 8px;
 		background-color: #703;
-		padding: 10px;
+		padding: 4px;
 }
 
 .navbar-el {
@@ -9,7 +9,7 @@
 		border-radius: 8px;
 		background-color: #502;
 		margin: 5px;
-		padding: 5px;
+		padding: 6px;
 		color: #dcd;
 		text-align: right;
 		font-family: 'Helvetica';
