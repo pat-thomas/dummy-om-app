@@ -13,10 +13,9 @@
                                 (om/transact! data [:users :accounts] (fn [_]
                                                                         resp)))}))
   (render
-   (println "opts:" opts)
-   (let [{:strs [username email]} (friend-model/locate-by-id (get-in data [:users :accounts])
-                                                             (:id opts))]
+   (let [{:strs [username email avatar_url]} (friend-model/locate-by-id (get-in data [:users :accounts])
+                                                                        (:id opts))]
      (dom/div #js {:id "friends-detail"}
               (dom/img #js {:className "friends-detail-img"
-                            :src       "https://placekitten.com/g/80/80"})
+                            :src       avatar_url})
               (dom/div nil (str username ", " email))))))

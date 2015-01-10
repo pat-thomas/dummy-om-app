@@ -1,8 +1,8 @@
 {
   "users": {
     "accounts": [
-      {"username": "OatRhombus", "email": "oat@rhom.bus"},
-      {"username": "PatThomas", "email": "pat@thom.as"}
+      {"username": "OatRhombus", "email": "oat@rhom.bus", "avatar_url": "http://www.zenimax.com/jpn/fallout3/images/avators/80x80falloutav-vb.gif"},
+      {"username": "PatThomas",  "email": "pat@thom.as",  "avatar_url": "http://png-5.findicons.com/files/icons/175/halloween_avatar/80/gomez.png"}
     ],
 
     "messages": [
