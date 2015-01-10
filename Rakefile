@@ -15,6 +15,6 @@ end
 namespace :scss do
   desc "Automatically compile .scss into .css files"
   task :auto do
-    system "sass --watch resources/src/scss:resources/public/css"
+    system "sass --watch resources/src/scss:resources/public/css --style compressed"
   end
 end
