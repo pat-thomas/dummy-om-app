@@ -6,12 +6,14 @@
   :plugins [[lein-cljsbuild "1.0.4"]]
   :source-paths ["src"]
   :dependencies [[org.clojure/clojure        "1.6.0"]
+                 [org.clojure/tools.nrepl    "0.2.5"]
                  [org.clojure/clojurescript  "0.0-2665"]
                  [om                         "0.8.0-rc1"]
                  [om-utils                   "0.4.0"]
                  [secretary                  "1.2.1"]
                  [com.cognitect/transit-cljs "0.8.199"]
                  [sham                       "0.1.0-SNAPSHOT"]]
+  :main dummy-om-app.server.core/init!
   :cljsbuild {:builds [{:id           "development"
                         :source-paths ["src/dummy_om_app/app"]
                         :compiler     {:output-to     "dummy_om_app.js"
