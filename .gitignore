@@ -10,3 +10,5 @@ pom.xml.asc
 /out
 dummy_om_app.js
 dummy_om_app_prod.js
+/.sass-cache/
+/resources/public
