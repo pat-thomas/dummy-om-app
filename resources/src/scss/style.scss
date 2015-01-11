@@ -49,6 +49,9 @@ body {
   background-color: #502;
   list-style-type:  none;
   padding:          8px;
+  &:nth-last-child(n+1) {
+    margin-bottom: 10px;
+  }
   &:hover {
     background-color: #703;
     cursor:           pointer;
