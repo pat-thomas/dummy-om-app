@@ -13,6 +13,7 @@
   [clj-data]
   (transit/write w clj-data))
 
-(defn redirect
-  [redirect-location]
-  (.setToken (History.) redirect-location))
+(defn parse-int
+  [int-str]
+  (when (string? int-str)
+    (.parseInt js/window int-str)))

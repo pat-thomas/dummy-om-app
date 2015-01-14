@@ -1,9 +1,8 @@
 (ns dummy-om-app.app.components.friends
-  (:require [dummy-om-app.app.models.friend :as friend-model]
-            [dummy-om-app.app.history       :as history]
-            [dummy-om-app.app.xhr           :as xhr]
-            [om.core                        :as om  :include-macros true]
-            [om.dom                         :as dom :include-macros true])
+  (:require [dummy-om-app.app.history :as history]
+            [dummy-om-app.app.xhr     :as xhr]
+            [om.core                  :as om  :include-macros true]
+            [om.dom                   :as dom :include-macros true])
   (:require-macros [om-utils.core :refer [defcomponent]]))
 
 (defn navigate-to-friend
