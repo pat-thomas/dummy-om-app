@@ -5,9 +5,7 @@
   [^java.util.Map data ^clojure.lang.Keyword key-path-one ^clojure.lang.Keyword key-path-two ^java.util.Map locator]
   (let [locator-keys (keys locator)
         matching     (filter (fn [candidate]
-                               (let [selected-candidate (select-keys candidate locator-keys)]
-                                 (println "attempting to match locator:" locator "to:" selected-candidate)
-                                 (= locator selected-candidate)))
+                               (= locator (select-keys candidate locator-keys)))
                              (get-in data [key-path-one key-path-two]))]
     (cond (empty? matching)
           nil
