@@ -5,7 +5,8 @@
             [dummy-om-app.app.history        :as history]
             [om.core                         :as om  :include-macros true]
             [om.dom                          :as dom :include-macros true]
-            [secretary.core                  :as secretary :refer-macros [defroute]]))
+            [secretary.core                  :as secretary :refer-macros [defroute]])
+  (:require-macros [dummy-om-app.app.router :refer [current-view-route!]]))
 
 (defn set-current-view!
   [current-view & [opts]]
@@ -14,29 +15,12 @@
                                                         :opts opts}))
     (swap! app-state/app-state #(assoc % :current-view {:view current-view}))))
 
-(defroute root "/"
-  []
-  (history/redirect "home"))
-
-(defroute home "/home"
-  []
-  (set-current-view! "home"))
-
-(defroute messages "/messages"
-  []
-  (set-current-view! "messages"))
-
-(defroute sign-out "/sign-out"
-  []
-  (set-current-view! "sign-out"))
-
-(defroute friends "/friends"
-  []
-  (set-current-view! "friends"))
-
-(defroute friends-detail "/friends/:id"
-  [id]
-  (set-current-view! "friends-detail" {:id id}))
+(current-view-route! home "/")
+(current-view-route! home)
+(current-view-route! messages)
+(current-view-route! sign-out)
+(current-view-route! friends)
+(current-view-route! friends-detail "/friends/:id" [id])
 
 (defroute "*"
   []
