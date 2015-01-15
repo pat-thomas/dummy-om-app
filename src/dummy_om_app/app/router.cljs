@@ -14,13 +14,6 @@
                                                         :opts opts}))
     (swap! app-state/app-state #(assoc % :current-view {:view current-view}))))
 
-#_(defn get-current-view-data
-    []
-    (-> app-state/app-state
-        deref
-        :current-view
-        :opts))
-
 (defroute root "/"
   []
   (history/redirect "home"))
@@ -48,7 +41,3 @@
 (defroute "*"
   []
   (history/redirect "home"))
-
-
-
-
