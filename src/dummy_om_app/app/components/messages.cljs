@@ -1,6 +1,6 @@
 (ns dummy-om-app.app.components.messages
   (:require [dummy-om-app.app.state :as app-state]
-            [dummy-om-app.app.models.messages :as messages-model]
+            [dummy-om-app.app.models.helper :as model-helper]
             [dummy-om-app.app.xhr   :as xhr]
             [dummy-om-app.app.util  :as util]
             [om.core                :as om  :include-macros true]
@@ -14,7 +14,7 @@
 
 (defcomponent messages
   (will-mount
-   (messages-model/fetch))
+   (model-helper/fetch-from-db :users :messages))
   (render
    (apply dom/div #js {:id "messages"}
           (map (fn [message-data]
