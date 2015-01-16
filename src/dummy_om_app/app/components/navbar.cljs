@@ -13,7 +13,6 @@
 
 (defcomponent navbar-link
   (render
-   (println opts)
    (let [{:keys [link-text current-view]} opts
          app-url                          (link-text->app-url link-text)
          class-name                       (if (= app-url current-view)
