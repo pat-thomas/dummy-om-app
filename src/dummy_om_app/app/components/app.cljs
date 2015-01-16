@@ -3,6 +3,7 @@
             [dummy-om-app.app.util                      :as util]
             [dummy-om-app.app.components.navbar         :as navbar]
             [dummy-om-app.app.components.messages       :as messages]
+            [dummy-om-app.app.components.messages.user-inbox       :as message-user-inbox]
             [dummy-om-app.app.components.home           :as home]
             [dummy-om-app.app.components.friends        :as friends]
             [dummy-om-app.app.components.friends.detail :as friends-detail]
@@ -13,18 +14,19 @@
                    [dummy-om-app.app.macros :refer [register-standard-route!]]))
 
 (def routing-table
-  {""               home/home
-   "home"           home/home
-   "friends"        friends/friends
-   "friends-detail" friends-detail/friends-detail
-   "messages"       messages/messages
-   "sign-out"       sign-out/sign-out})
+  {""                   home/home
+   "home"               home/home
+   "friends"            friends/friends
+   "friends-detail"     friends-detail/friends-detail
+   "messages"           messages/messages
+   "sign-out"           sign-out/sign-out
+   "message-user-inbox" message-user-inbox/user-inbox})
 
 (defcomponent app-root
   (render
-   (dom/div #js {:id "app"}
-            (om/build navbar/navbar                            data {})
-            (println "Rendering" (get-in data [:current-view :view]))
-            (dom/div #js {:id "main-content"}
-                     (let [current-view (:current-view data)]
-                       (om/build (get routing-table (:view current-view)) data {:opts (:opts current-view)}))))))
+   (let [{:keys [view opts]} (:current-view data)]
+     (dom/div #js {:id "app"}
+              (om/build navbar/navbar data {:opts (assoc opts :current-view view)})
+              (println "Rendering" (get-in data [:current-view :view]))
+              (dom/div #js {:id "main-content"}
+                       (om/build (get routing-table view) data {:opts opts}))))))
