@@ -7,7 +7,11 @@
 
 (defcomponent friends-detail
   (will-mount
-   (model-helper/fetch-from-db :users :accounts))
+   (xhr/xhr-req {:method      :get
+                 :url         "users/accounts"
+                 :on-complete (fn [resp]
+                                (om/transact! data [:users :accounts] (fn [_]
+                                                                        resp)))}))
   (render
    (let [{:strs [username email avatar_url]} (model-helper/find-by-id data :users :accounts (:id opts))]
      (dom/div #js {:id "friends-detail"}

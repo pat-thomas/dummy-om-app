@@ -9,10 +9,6 @@ body {
   background-color: #111;
   color:            #ede;
 }
-.higlighted {
-  background-color: #925;
-  color:            #fff;
-}
 
 #navbar {
   height:           40px;
@@ -40,11 +36,6 @@ body {
       }
     }
   }
-}
-
-.highlighted {
-  background-color: #925;
-  color:            #fff;
 }
 
 #main-content {
@@ -77,22 +68,3 @@ body {
   border-radius: 8px;
   padding: 8px;
 }
-
-.content-area {
-  border-radius:    8px;
-  background-color: #502;
-  list-style-type:  none;
-  padding:          8px;
-  &:nth-last-child(n+1) {
-    margin-bottom: 10px;
-  }
-  &:hover {
-    background-color: #703;
-    cursor:           pointer;
-  }
-}
-
-      .higlighted {
-        background-color: #925;
-        color:            #fff;
-      }

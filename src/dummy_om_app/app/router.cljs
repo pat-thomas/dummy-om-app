@@ -21,7 +21,6 @@
 (current-view-route! sign-out)
 (current-view-route! friends)
 (current-view-route! friends-detail "/friends/:id" [id])
-(current-view-route! message-user-inbox "/message-inbox/user/:sender-id" [sender-id])
 
 (defroute "*"
   []
