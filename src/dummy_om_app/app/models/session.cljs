@@ -16,7 +16,8 @@
    {:method      :get
     :url         "session"
     :on-complete (fn [{:keys [status] :as resp}]
-                   (when-let [handler (get session-dispatch-table status)]
+                   (when-let [handler (or (get session-dispatch-table status)
+                                          (get session-dispatch-table "*"))]
                      (if data
                        (handler data)
                        (handler))))}))

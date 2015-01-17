@@ -2,6 +2,7 @@
   (:require [dummy-om-app.app.state :as app-state]
             [dummy-om-app.app.xhr   :as xhr]
             [dummy-om-app.app.util  :as util]
+            [dummy-om-app.app.models.session :refer [dispatch-on-session-status]]
             [om.core                :as om  :include-macros true]
             [om.dom                 :as dom :include-macros true])
   (:require-macros [om-utils.core :refer [defcomponent]]))
@@ -20,9 +21,19 @@
     :js-opts   #js {:href   "https://github.com/pat-thomas/sham"
                     :target "_none"}}])
 
+(defn render-home
+  []
+  (apply dom/div nil
+         (map (fn [{:keys [render-fn text js-opts]}]
+                (dom/div nil (render-fn js-opts text)))
+              home-text)))
+
+(defn render-home-not-authorized
+  []
+  (dom/div nil "you are not authorized"))
+
 (defcomponent home
   (render
-   (apply dom/div nil
-          (map (fn [{:keys [render-fn text js-opts]}]
-                 (dom/div nil (render-fn js-opts text)))
-               home-text))))
+   (dispatch-on-session-status
+    {"Authorized" render-home
+     "*"          render-home-not-authorized})))
