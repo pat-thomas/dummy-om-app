@@ -5,18 +5,20 @@
 
 (defn get-session
   []
-  (xhr/xhr-req {:method :get
-                :url    "session"
+  (xhr/xhr-req {:method      :get
+                :url         "session"
                 :on-complete (fn [resp]
                                (swap! app-state/app-state assoc :session resp))}))
 
 (defn dispatch-on-session-status
   [session-dispatch-table & [data]]
-  (xhr/xhr-req
-   {:method      :get
-    :url         "session"
-    :on-complete (fn [{:keys [status] :as resp}]
-                   (when-let [handler (get session-dispatch-table status)]
-                     (if data
-                       (handler data)
-                       (handler))))}))
+  (get-session)
+  (let [status (-> app-state/app-state
+                   deref
+                   :session
+                   (get "status"))]
+    (when-let [handler (or (get session-dispatch-table status)
+                           (get session-dispatch-table "*"))]
+      (if data
+        (handler data)
+        (handler)))))
