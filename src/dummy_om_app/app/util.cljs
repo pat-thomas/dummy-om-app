@@ -11,7 +11,7 @@
 
 (defn write-json
   [clj-data]
-  (transit/write w clj-data))
+  (.stringify js/JSON (clj->js clj-data)))
 
 (defn parse-int
   [int-str]
