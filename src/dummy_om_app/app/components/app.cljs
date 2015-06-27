@@ -1,6 +1,8 @@
 (ns dummy-om-app.app.components.app
   (:require [dummy-om-app.app.state                     :as app-state]
             [dummy-om-app.app.util                      :as util]
+            [dummy-om-app.app.history                   :as history]
+            [dummy-om-app.app.models.session            :as session]
             [dummy-om-app.app.components.navbar         :as navbar]
             [dummy-om-app.app.components.messages       :as messages]
             [dummy-om-app.app.components.home           :as home]
@@ -21,6 +23,12 @@
    "sign-out"       sign-out/sign-out})
 
 (defcomponent app-root
+  (will-mount
+   (session/dispatch-on-session-status
+    {"NotAuthorized" (fn [_]
+                       (history/redirect "login"))
+     "*"             (fn [_]
+                       :no-op)}))
   (render
    (dom/div #js {:id "app"}
             (om/build navbar/navbar                            data {})

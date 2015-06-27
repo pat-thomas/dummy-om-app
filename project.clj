@@ -7,6 +7,7 @@
   :source-paths ["src"]
   :dependencies [[org.clojure/clojure        "1.6.0"]
                  [org.clojure/tools.nrepl    "0.2.5"]
+                 [org.clojure/core.async     "0.1.346.0-17112a-alpha"]
                  [org.clojure/clojurescript  "0.0-2665"]
                  [datascript                 "0.7.2"]
                  [om                         "0.8.0-rc1"]
